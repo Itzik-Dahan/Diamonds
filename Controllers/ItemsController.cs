@@ -102,7 +102,7 @@ namespace Diamonds.Controllers
 
          repository.DeleteItem(id);
 
-         return NoContent();
+         return NoContent(); 
       }
    }
 }
