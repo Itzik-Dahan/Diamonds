@@ -4,6 +4,7 @@ namespace Diamonds.Dtos
 {
    public record ItemDto
    {
+      
       public Guid Id {get ; init; }
       public string Shape { get; init; }
       public double Size { get; init; }

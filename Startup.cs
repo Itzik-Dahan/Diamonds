@@ -34,6 +34,8 @@ namespace diamondsc_
       {
          BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
+         services.AddCors();
+
          services.AddSingleton<IMongoClient>(ServiceProvider =>
          {
             var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
@@ -65,6 +67,8 @@ namespace diamondsc_
          app.UseHttpsRedirection();
 
          app.UseRouting();
+
+         app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 
          app.UseAuthorization();
 
