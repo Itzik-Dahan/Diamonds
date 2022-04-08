@@ -32,15 +32,15 @@ namespace diamondsc_
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
-         // BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+         BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
-         // services.AddCors();
+         services.AddCors();
 
-         // services.AddSingleton<IMongoClient>(ServiceProvider =>
-         // {
-         //    var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-         //    return new MongoClient(settings.ConnetionSring);
-         // });
+         services.AddSingleton<IMongoClient>(ServiceProvider =>
+         {
+            var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+            return new MongoClient(settings.ConnetionSring);
+         });
 
          services.AddSingleton<IItemsRepository, InMemItemsRepository>();
 
